@@ -1,0 +1,15 @@
+Update bn_install_info
+Set operator = 'HKBN',
+       operator_addr_id = address_id,
+       operator_insl_flat = address_flat,
+       operator_insl_id = address_floor
+where operator is null
+   and address_id not like 'S%'
+
+Update bn_install_info
+Set operator = 'HKBN',
+       operator_addr_id = (select hkbn_addr_id from fbb_building_site where smc_address_id = address_id),
+       operator_insl_flat = address_flat,
+       operator_insl_id = address_floor
+where operator is null
+   and address_id like 'S%'dfg
